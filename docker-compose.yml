@@ -1,0 +1,15 @@
+services:
+  microsocks-docker:
+    build: .
+    image: microsocks-docker
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:1080
+    networks:
+      - internet
+
+networks:
+  internet: {}
+
