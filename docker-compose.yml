@@ -6,4 +6,4 @@ services:
     env_file:
       - .env
     ports:
-      - "${LISTEN_PORT:-1080}:${LISTEN_PORT:-1080}"
+      - "0.0.0.0:${LISTEN_PORT:-1080}:${LISTEN_PORT:-1080}"
