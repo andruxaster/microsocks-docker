@@ -1,13 +1,13 @@
 FROM debian:stable-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update \
-  && apt-get install -y \
-    microsocks \
-  && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+ && apt-get install -y --no-install-recommends microsocks \
+ && rm -rf /var/lib/apt/lists/*
 
-COPY entrypoint.sh /src/
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 1080
-ENTRYPOINT ["/src/entrypoint.sh"]
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
